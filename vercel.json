@@ -1,13 +1,15 @@
 {
-    "version": "v18.17.0",
-    "builds": {
-        "src":"index.js",
-        "use":"@now/node"
-    },
-    "routes":[
-        {
-            "src":"/(.*)",
-            "dest":"index.js"
-        }
-    ]
+  "version": "v18.17.0",
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "index.js"
+    }
+  ]
 }
