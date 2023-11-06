@@ -18,10 +18,16 @@ const app = express();
 //   process.exit(1);
 // }
 
-mongoose
-  .connect("mongodb://localhost/EHB-BE")
-  .then(() => console.log("Connected to MongoDB..."))
-  .catch((err) => console.error("Could not connect to MongoDB..."));
+// mongoose
+//   .connect("mongodb://localhost/EHB-BE")
+//   .then(() => console.log("Connected to MongoDB..."))
+//   .catch((err) => console.error("Could not connect to MongoDB..."));
+
+const dbUri = config.get("dbUri");
+  mongoose.connect(dbUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
 
 
 app.use(express.json());
@@ -35,5 +41,10 @@ app.use("/api/auth", auth);
 
 require('./startup/prod') (app);
 
+// const port = process.env.PORT || 3000;
+// app.listen(port, () => console.log(`Listening on port ${port}...`));
+
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+  app.listen(port, () => {
+    console.log(`Listening on port ${port}...`);
+  });
