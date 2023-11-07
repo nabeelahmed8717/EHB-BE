@@ -30,7 +30,9 @@ app.use("/api/movies", movies);
 app.use("/api/rentals", rentals);
 app.use("/api/users", users);
 app.use("/api/auth", auth);
-
+app.use("/", (req, res) => {
+  res.send('Welcome to home page')
+})
 
 require('./startup/prod') (app);
 
