@@ -18,20 +18,10 @@ if (!config.get("jwtPrivateKey")) {
   process.exit(1);
 }
 
-// mongoose
-//   .connect(process.env.MONGODB_URI)
-//   .then(() => console.log("Connected to MongoDB..."))
-//   .catch((err) => console.error("Could not connect to MongoDB..."));
-
-
 mongoose
-  .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
+  .connect("mongodb://localhost/EHB-BE")
   .then(() => console.log("Connected to MongoDB..."))
   .catch((err) => console.error("Could not connect to MongoDB..."));
-
 
 app.use(express.json());
 app.use("/api/genres", genres);
