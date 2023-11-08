@@ -19,7 +19,7 @@ if (!config.get("jwtPrivateKey")) {
 }
 
 mongoose
-  .connect('mongodb+srv://ehbdevelopment:A2QXcLLbRFO3XEYN@ehbDevelopment.yyzuimj.mongodb.net/?retryWrites=true&w=majority"')
+  .connect('mongodb+srv://ehbdevelopment:A2QXcLLbRFO3XEYN@ehbDevelopment.yyzuimj.mongodb.net/test/?retryWrites=true&w=majority')
   .then(() => console.log("Connected to MongoDB..."))
   .catch((err) => console.error("Could not connect to MongoDB...",err));
 
