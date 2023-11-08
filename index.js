@@ -13,15 +13,20 @@ const auth = require("./routes/auth");
 const express = require("express");
 const app = express();
 
-if (!config.get("jwtPrivateKey")) {
-  console.log("FATAL ERROR: jwtPrivateKey is not defined.");
-  process.exit(1);
-}
+// if (!config.get("jwtPrivateKey")) {
+//   console.log("FATAL ERROR: jwtPrivateKey is not defined.");
+//   process.exit(1);
+// }
 
 mongoose
-  .connect("mongodb://localhost/EHB-BE")
+  .connect("mongodb+srv://ehbdevelopment:A2QXcLLbRFO3XEYN@ehbdevelopment.yyzuimj.mongodb.net/ehbDevelopment?retryWrites=true&w=majority",{
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("Connected to MongoDB..."))
-  .catch((err) => console.error("Could not connect to MongoDB..."));
+  .catch((err) => console.error(err, "Could not connect to MongoDB..."));
+
+
 
 app.use(express.json());
 app.use("/api/genres", genres);
