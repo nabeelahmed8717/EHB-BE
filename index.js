@@ -19,9 +19,9 @@ if (!config.get("jwtPrivateKey")) {
 }
 
 mongoose
-  .connect("mongodb://localhost/EHB-BE")
+  .connect(process.env.MONGODB_URL)
   .then(() => console.log("Connected to MongoDB..."))
-  .catch((err) => console.error("Could not connect to MongoDB..."));
+  .catch((err) => console.error("Could not connect to MongoDB...",err));
 
 app.use(express.json());
 app.use("/api/genres", genres);
@@ -36,5 +36,5 @@ app.use("/", (req, res) => {
 
 require('./startup/prod') (app);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
