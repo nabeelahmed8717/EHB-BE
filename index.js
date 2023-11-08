@@ -1,3 +1,4 @@
+require('dotenv').config();
 const config = require("config");
 const Joi = require("joi");
 Joi.objectId = require("joi-objectid")(Joi);
@@ -11,13 +12,13 @@ const auth = require("./routes/auth");
 const express = require("express");
 const app = express();
 
-// if (!config.get("jwtPrivateKey")) {
-//   console.log("FATAL ERROR: jwtPrivateKey is not defined.");
-//   process.exit(1);
-// }
+if (!process.env.JWT_PRIVATE_KEY) {
+  console.log("FATAL ERROR 1: jwtPrivateKey is not defined.");
+  process.exit(1);
+}
 
 mongoose
-  .connect("mongodb+srv://ehbdevelopment:A2QXcLLbRFO3XEYN@ehbdevelopment.yyzuimj.mongodb.net/ehbDevelopment?retryWrites=true&w=majority",{
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
