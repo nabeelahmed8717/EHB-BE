@@ -19,7 +19,7 @@ if (!config.get("jwtPrivateKey")) {
 }
 
 mongoose
-  .connect(process.env.MONGODB_URL)
+  .connect('mongodb+srv://ehbdevelopment:A2QXcLLbRFO3XEYN@ehbDevelopment.yyzuimj.mongodb.net/?retryWrites=true&w=majority"')
   .then(() => console.log("Connected to MongoDB..."))
   .catch((err) => console.error("Could not connect to MongoDB...",err));
 
