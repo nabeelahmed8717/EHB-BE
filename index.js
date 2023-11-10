@@ -1,5 +1,6 @@
 require('dotenv').config();
 const config = require("config");
+const cors = require("cors"); // Add this line
 const Joi = require("joi");
 Joi.objectId = require("joi-objectid")(Joi);
 const mongoose = require("mongoose");
@@ -11,6 +12,8 @@ const auth = require("./routes/auth");
 
 const express = require("express");
 const app = express();
+
+app.use(cors());
 
 if (!process.env.JWT_PRIVATE_KEY) {
   console.log("FATAL ERROR 1: jwtPrivateKey is not defined.");
