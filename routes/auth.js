@@ -9,11 +9,15 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
+  
+  // let user = await User.findOne({ email: req.body.email });
 
   // Check if the login identifier is an email or username
   let user = await User.findOne({
-    $or: [{ email: req.body.email }, { userName: req.body.userName }],
+    $or: [{ email: req.body.identifier }, { userName: req.body.identifier }],
   });
+
+  console.log(user); // Add this line
 
   if (!user) return res.status(400).send("Invalid email or password");
 
