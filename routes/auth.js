@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
 
   // Check if the login identifier is an email or username
   let user = await User.findOne({
-    $or: [{ email: req.body.identifier }, { userName: req.body.identifier }],
+    $or: [{ email: req.body.email }, { userName: req.body.userName }],
   });
 
   if (!user) return res.status(400).send("Invalid email or password");
