@@ -16,6 +16,12 @@ const userSchema = new mongoose.Schema({
     minlength: 1,
     maxlength: 50,
   },
+  userName: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 50,
+  },
   email: {
     type: String,
     required: true,
@@ -55,6 +61,7 @@ userSchema.methods.generateAuthToken = function () {
       email: this.email,
       firstName: this.firstName,
       lastName: this.lastName,
+      userName: this.userName,
       referralCode: this.referralCode,
       phoneNumber: this.phoneNumber,
     },
@@ -69,6 +76,7 @@ function validateUser(user) {
   const schema = {
     firstName: Joi.string().min(1).max(50).required(),
     lastName: Joi.string().min(1).max(50).required(),
+    userName: Joi.string().min(1).max(50).required(),
     email: Joi.string().min(5).max(255).required().email(),
     country: Joi.string().min(1).max(50).required(),
     phoneNumber: Joi.string().min(1).max(20).required(),
