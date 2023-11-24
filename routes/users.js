@@ -17,6 +17,7 @@ router.post("/", async (req, res) => {
     _.pick(req.body, [
       "firstName",
       "lastName",
+      "userName",
       "email",
       "country",
       "phoneNumber",
