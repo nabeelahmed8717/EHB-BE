@@ -1,6 +1,7 @@
 const nodemailer = require("nodemailer");
 const Joi = require("joi");
 const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 const _ = require("lodash");
 const { User } = require("../models/users");
 const mongoose = require("mongoose");
