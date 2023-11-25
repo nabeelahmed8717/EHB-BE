@@ -33,7 +33,7 @@ router.post("/reset-password-request", async (req, res) => {
         // },
         auth: {
             user: "ehb.developers@gmail.com",
-            pass: "EHB*12345",
+            pass: "rans lftl dghr cgts",
           }
     });
 
