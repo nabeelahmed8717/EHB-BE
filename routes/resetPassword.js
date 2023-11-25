@@ -27,14 +27,18 @@ router.post("/reset-password-request", async (req, res) => {
         // Set up your email configuration (SMTP, service, etc.)
         // Example with Gmail:
         service: "gmail",
+        // auth: {
+        //     user: "ehb.development@gmail.com",
+        //     pass: "EHB*12345",
+        // },
         auth: {
             user: "ehb.development@gmail.com",
             pass: "EHB*12345",
-        },
+          }
     });
 
     const mailOptions = {
-        from: "your-email@gmail.com",
+        from: "ehb.development@gmail.com",
         to: user.email,
         subject: "Password Reset",
         text:
