@@ -32,13 +32,13 @@ router.post("/reset-password-request", async (req, res) => {
         //     pass: "EHB*12345",
         // },
         auth: {
-            user: "ehb.development@gmail.com",
+            user: "ehb.developers@gmail.com",
             pass: "EHB*12345",
           }
     });
 
     const mailOptions = {
-        from: "ehb.development@gmail.com",
+        from: "ehb.developers@gmail.com",
         to: user.email,
         subject: "Password Reset",
         text:
