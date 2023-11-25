@@ -9,27 +9,22 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-
-  // let user = await User.findOne({ email: req.body.email });
-
-  // Check if the login identifier is an email or username
   let user = await User.findOne({
     $or: [{ email: req.body.identifier }, { userName: req.body.identifier }],
   });
 
-  console.log(user); // Add this line
+  console.log(user); 
 
   if (!user) return res.status(400).send("Invalid email or password");
 
-  // Check if the password is already encrypted
   const isPasswordEncrypted = user.password.startsWith("$2b$");
 
   let validPassword;
   if (isPasswordEncrypted) {
-    // Password is already encrypted, validate using bcrypt
+
     validPassword = await bcrypt.compare(req.body.password, user.password);
   } else {
-    // Password is not encrypted, validate without bcrypt
+
     validPassword = req.body.password === user.password;
   }
 

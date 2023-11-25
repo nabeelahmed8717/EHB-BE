@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const genres = require("./routes/genres");
 const users = require("./routes/users");
 const auth = require("./routes/auth");
+const resetPassword = require("./routes/resetPassword");
 
 
 const express = require("express");
@@ -35,6 +36,7 @@ app.use(express.json());
 app.use("/api/genres", genres);
 app.use("/api/users", users);
 app.use("/api/auth", auth);
+app.use("/api/resetPassword", resetPassword);
 app.use("/", (req, res) => {
   res.send('Welcome to ehb.com.co')
 })
