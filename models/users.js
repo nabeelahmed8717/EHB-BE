@@ -52,6 +52,12 @@ const userSchema = new mongoose.Schema({
     minlength: 0,
     maxlength: 50,
   },
+  resetPasswordToken: {
+    type: String,
+  },
+  resetPasswordExpires: {
+    type: Date,
+  },
 });
 
 userSchema.methods.generateAuthToken = function () {
