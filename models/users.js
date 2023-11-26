@@ -88,6 +88,8 @@ function validateUser(user) {
     phoneNumber: Joi.string().min(1).max(20).required(),
     password: Joi.string().min(5).max(255).required(),
     referralCode: Joi.string().max(50),
+    resetPasswordExpires: Joi.string().max(50),
+    resetPasswordToken: Joi.string().max(50),
   };
   return Joi.validate(user, schema);
 }
