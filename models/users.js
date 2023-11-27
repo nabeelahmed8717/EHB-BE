@@ -52,6 +52,11 @@ const userSchema = new mongoose.Schema({
     minlength: 0,
     maxlength: 50,
   },
+  affUser: {
+    type: String,
+    minlength: 0,
+    maxlength: 50,
+  },
   resetPasswordToken: {
     type: String,
   },
@@ -70,6 +75,7 @@ userSchema.methods.generateAuthToken = function () {
       userName: this.userName,
       referralCode: this.referralCode,
       phoneNumber: this.phoneNumber,
+      affUser: this.affUser,
     },
     config.get("jwtPrivateKey")
   );
@@ -87,6 +93,7 @@ function validateUser(user) {
     country: Joi.string().min(1).max(50).required(),
     phoneNumber: Joi.string().min(1).max(20).required(),
     password: Joi.string().min(5).max(255).required(),
+    affUser: Joi.string().min(5).max(255).required(),
     referralCode: Joi.string().max(50),
     resetPasswordExpires: Joi.string().max(50),
     resetPasswordToken: Joi.string().max(50),

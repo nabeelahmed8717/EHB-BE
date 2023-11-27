@@ -23,6 +23,7 @@ router.post("/", async (req, res) => {
       "phoneNumber",
       "password",
       "referralCode",
+      "affUser",
     ])
   );
 
