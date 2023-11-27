@@ -37,10 +37,10 @@ router.post("/reset-password-request", async (req, res) => {
         subject: "Password Reset",
         html: `
         <div style="
-        display: flex; 
-        flex-direction: column; 
-        align-items: center;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        display: flex;
+    font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
+    flex-direction: column;
+    align-items: center;
     ">
         <img src="https://cdn-icons-png.flaticon.com/128/673/673069.png" alt="" style="height: 100px; width: 100px;">
         <h4 style="white-space: nowrap;">Reset Your Password</h4>
