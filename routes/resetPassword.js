@@ -28,19 +28,48 @@ router.post("/reset-password-request", async (req, res) => {
         auth: {
             user: "ehb.developers@gmail.com",
             pass: "rans lftl dghr cgts",
-          }
+        }
     });
 
     const mailOptions = {
         from: "ehb.developers@gmail.com",
         to: user.email,
         subject: "Password Reset",
-        text:
-            `You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n` +
-            `Please click on the following link, or paste this into your browser to complete the process:\n\n` +
-            `https://ehb-live.com/reset-password/${user.resetPasswordToken}\n\n` +
-            `If you did not request this, please ignore this email and your password will remain unchanged.\n`,
+        text: `
+        <div style="display: flex; flex-direction: column; align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+        <img src="https://cdn-icons-png.flaticon.com/128/673/673069.png" alt="" style="height: 100px;">
+        <h4 style="white-space: nowrap;">Reset Your Password</h4>
+        <div>
+            <p style="font-size: 14px;"><strong>Hello!</strong></p>
+            <p style="font-size: 14px;">You are receiving this email because you (or someone else) have requested the reset of the password for your account.</p>
+            <p style="font-size: 14px;">Please click on the following link to complete the process:</p>
+            <a href="https://ehb-live.com/reset-password/${user.resetPasswordToken}">
+                <button style="
+                    background-color: #0984e3;
+                    border: none;
+                    border-radius: 24px;
+                    padding: 10px 18px;
+                    color: aliceblue;
+                    height: fit-content;">
+                    Reset Password
+                </button>
+            </a>
+            <p style="font-size: 14px;">If you did not request this, please ignore this email and your password will remain unchanged.</p>
+        </div>
+    </div>`,
+
     };
+    // const mailOptions = {
+    //     from: "ehb.developers@gmail.com",
+    //     to: user.email,
+    //     subject: "Password Reset",
+    //     text:
+    //         `You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n` +
+    //         `Please click on the following link, or paste this into your browser to complete the process:\n\n` +
+    //         `https://ehb-live.com/reset-password/${user.resetPasswordToken}\n\n` +
+    //         `If you did not request this, please ignore this email and your password will remain unchanged.\n`,
+    // };
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
