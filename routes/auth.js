@@ -10,7 +10,7 @@ router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
   let user = await User.findOne({
-    $or: [{ email: req.body.identifier.toLowerCase() }, { userName: req.body.identifier.toLowerCase() }],
+    $or: [{ email: req.body.identifier}, { userName: req.body.identifier }],
   });
   
   // let user = await User.findOne({
