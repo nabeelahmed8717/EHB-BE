@@ -45,7 +45,7 @@ router.post("/reset-password-request", async (req, res) => {
             <p style="font-size: 14px;"><strong>Hello!</strong></p>
             <p style="font-size: 14px;">You are receiving this email because you (or someone else) have requested the reset of the password for your account.</p>
             <p style="font-size: 14px;">Please click on the following link to complete the process:</p>
-            <a href="https://ehb-live.com/reset-password/${user.resetPasswordToken}">
+            <a href="https://ehb.com.co/reset-password/${user.resetPasswordToken}">
                 <button style="
                     background-color: #0984e3;
                     border: none;
