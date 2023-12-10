@@ -9,17 +9,21 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-  let user = await User.findOne({
-    $or: [{ email: req.body.identifier.toLowerCase()}, { userName: req.body.identifier }],
-  });
-  
+
   // let user = await User.findOne({
-  //   $or: [{ email: req.body.identifier }, { userName: req.body.identifier }],
+  //   $or: [{ email: req.body.identifier}, { userName: req.body.identifier }],
   // });
 
-  // const identifier = req.body.identifier.toLowerCase()
+  const identifier = req.body.identifier.trim().toLowerCase();
 
-  console.log(user); 
+  let user = await User.findOne({
+    $or: [
+      { email: { $regex: new RegExp("^" + identifier, "i") } },
+      { userName: { $regex: new RegExp("^" + identifier, "i") } },
+    ],
+  });
+
+  console.log(user);
 
   if (!user) return res.status(400).send("Invalid email or password");
 
