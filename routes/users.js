@@ -13,13 +13,10 @@ router.post("/", async (req, res) => {
   if (user) return res.status(400).send("User already exists");
 
 
-  const lowerCaseUserName = req.body.userName.toLowerCase();
-  user = await User.findOne({ userName: lowerCaseUserName });
-
-  // user = await User.findOne({ userName: req.body.userName });
+  user = await User.findOne({ userName: req.body.userName });
   if (user) return res.status(400).send("UserName is already taken.");
 
-
+  
   user = new User(
     _.pick(req.body, [
       "firstName",
