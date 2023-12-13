@@ -76,6 +76,7 @@ userSchema.methods.generateAuthToken = function () {
       referralCode: this.referralCode,
       phoneNumber: this.phoneNumber,
       affUser: this.affUser,
+      timestamp: Date.now(),
     },
     config.get("jwtPrivateKey")
   );
