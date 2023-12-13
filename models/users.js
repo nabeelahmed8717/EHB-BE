@@ -65,7 +65,26 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+// userSchema.methods.generateAuthToken = function () {
+//   const token = jwt.sign(
+//     {
+//       _id: this._id,
+//       email: this.email,
+//       firstName: this.firstName,
+//       lastName: this.lastName,
+//       userName: this.userName,
+//       referralCode: this.referralCode,
+//       phoneNumber: this.phoneNumber,
+//       affUser: this.affUser,
+//       timestamp: Date.now(),
+//     },
+//     config.get("jwtPrivateKey")
+//   );
+//   return token;
+// };
+
 userSchema.methods.generateAuthToken = function () {
+  const userSpecificSecret = config.get("jwtPrivateKey") + this.affUser; // Or any other unique user information
   const token = jwt.sign(
     {
       _id: this._id,
@@ -78,10 +97,11 @@ userSchema.methods.generateAuthToken = function () {
       affUser: this.affUser,
       timestamp: Date.now(),
     },
-    config.get("jwtPrivateKey")
+    userSpecificSecret
   );
   return token;
 };
+
 
 const User = mongoose.model("User", userSchema);
 
