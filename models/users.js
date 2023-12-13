@@ -84,15 +84,15 @@ const userSchema = new mongoose.Schema({
 // };
 
 userSchema.methods.generateAuthToken = function () {
-  const userSpecificSecret = config.get("jwtPrivateKey") + this.affUser; // Or any other unique user information
+  const userSpecificSecret = config.get("jwtPrivateKey") + this.email + this._id;
   const token = jwt.sign(
     {
       _id: this._id,
       email: this.email,
-      firstName: this.firstName,
+      referralCode: this.referralCode,
       lastName: this.lastName,
       userName: this.userName,
-      referralCode: this.referralCode,
+      firstName: this.firstName,
       phoneNumber: this.phoneNumber,
       affUser: this.affUser,
       timestamp: Date.now(),

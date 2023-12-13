@@ -23,8 +23,6 @@ router.post("/", async (req, res) => {
     ],
   });
 
-  console.log(user);
-
   if (!user) return res.status(400).send("Invalid email or password");
 
   const isPasswordEncrypted = user.password.startsWith("$2b$");
