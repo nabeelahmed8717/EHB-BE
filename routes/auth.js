@@ -23,6 +23,13 @@ router.post("/", async (req, res) => {
     ],
   });
 
+  // let user = await User.findOne({
+  //   $or: [
+  //     { email: { $regex: new RegExp("^" + identifier, "i") } },
+  //     { userName: identifier },
+  //   ],
+  // });
+
   if (!user) return res.status(400).send("Invalid email or password");
 
   const isPasswordEncrypted = user.password.startsWith("$2b$");
